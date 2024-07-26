@@ -1,0 +1,15 @@
+BACKEND
+cd backend
+source venv/bin/activate
+python ollama_personas_API.py
+
+
+FRONTEND
+cd frontend
+node server.js
+
+
+BROWSER
+http://localhost:3000
+
+

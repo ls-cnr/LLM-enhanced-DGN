@@ -1,0 +1,70 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Personas Sintetiche</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+      <script>
+      // Verifica che marked sia caricato correttamente
+      window.onload = function() {
+          if (typeof marked === 'undefined') {
+              console.error('La libreria marked non è stata caricata correttamente');
+              // Definisci una funzione di fallback semplice
+              window.marked = {
+                  parse: function(text) {
+                      return text.replace(/\n/g, '<br>');
+                  }
+              };
+          } else {
+              console.log('La libreria marked è stata caricata correttamente');
+          }
+      };
+
+      // Funzione per copiare il testo nell'elemento "result"
+      function copyToClipboard() {
+          const resultElement = document.getElementById('result');
+          const range = document.createRange();
+          range.selectNodeContents(resultElement);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand('copy');
+          alert('Testo copiato negli appunti!');
+      }
+
+      // Genera un ID di sessione unico
+      let sessionId = uuidv4();
+
+      // Funzione per generare un nuovo ID di sessione
+      function nuovaSessione() {
+          sessionId = uuidv4();
+          alert('Nuova sessione creata!');
+      }
+  </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Generatore di Personas Sintetiche</h1>
+        <form id="personaForm">
+            <label for="objectives">Objectives:</label>
+            <input type="text" id="objectives" name="objectives" required>
+
+            <label for="features">Features:</label>
+            <input type="text" id="features" name="features" required>
+
+            <label for="nationality">Nazionalità:</label>
+            <input type="text" id="nationality" name="nationality" required>
+
+            <button type="submit">Genera Persona</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        <button onclick="copyToClipboard()">📋 Copia negli appunti</button>
+        <button onclick="nuovaSessione()">🔄 Nuova Sessione</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
