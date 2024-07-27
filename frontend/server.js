@@ -32,10 +32,19 @@ app.post('/generate', async (req, res) => {
       throw new Error(`HTTP error! status: ${pythonResponse.status}`);
     }
 
-    const data = await pythonResponse.json();
-    console.log('Risposta da Flask:', data);
+    // Imposta gli header per lo streaming
+    res.writeHead(200, {
+      'Content-Type': 'text/plain',
+      'Transfer-Encoding': 'chunked'
+    });
 
-    res.json(data);  // Invia la risposta del servizio Python al frontend
+    // Inoltro dello stream di risposta
+    pythonResponse.body.pipe(res);
+
+    pythonResponse.body.on('end', () => {
+      res.end();
+    });
+    
   } catch (error) {
     console.error('Errore durante la generazione della persona:', error);
     res.status(500).json({ error: 'Si è verificato un errore durante la generazione della persona.' });

@@ -1,15 +1,14 @@
 from langchain_community.llms import Ollama
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_core.runnables import RunnableWithMessageHistory
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_cors import CORS
 import sys
+import asyncio
 
 llm = Ollama(model="llama3")
 
-def create_chain():
+def create_prompt():
     template = """
     {design_objective}
     Assume the role of a User-centered Designer who is building Personas to design the system.
@@ -29,20 +28,24 @@ def create_chain():
     [A TYPICAL DAY. WRITTEN IN FIRST PERSON (MAX 80 WORDS)]
     """
 
-    prompt = ChatPromptTemplate.from_template(template)
-    chain = prompt | llm | StrOutputParser()
+    return ChatPromptTemplate.from_template(template)
 
-    return RunnableWithMessageHistory(
-        chain,
-        lambda session_id: ChatMessageHistory(key=session_id),
-        input_messages_key="input",
-        history_messages_key="history",
-    )
+    #prompt = ChatPromptTemplate.from_template(template)
+    #chain = prompt | llm | StrOutputParser()
+
+    #return RunnableWithMessageHistory(
+    #    chain,
+    #    lambda session_id: ChatMessageHistory(key=session_id),
+    #    input_messages_key="input",
+    #    history_messages_key="history",
+    #)
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-chain_with_history = create_chain()
+#chain_with_history = create_chain()
+prompt_template = create_prompt()
+
 
 @app.route('/generate', methods=['POST'])
 def handle_generate():
@@ -58,26 +61,18 @@ def handle_generate():
     print(f"Generating for {nationality} with features: {features}")
     print(f"Session ID: {session_id}")
 
-    # Crea il prompt finale
-    final_prompt = {
-        "design_objective": objective,
-        "country": nationality,
-        "features": features,
-        "input": f"Generate a persona for {nationality}"
-    }
-
-    # Stampa il prompt finale valorizzato
-    #formatted_prompt = chain_with_history.chain.input_messages_key.format(**final_prompt)
-    #print("Prompt finale valorizzato:", formatted_prompt)
-
-    persona = chain_with_history.invoke(
-        final_prompt,
-        config={"configurable": {"session_id": session_id}}
+    final_prompt = prompt_template.format(
+        design_objective=objective,
+        country=nationality,
+        features=features
     )
 
-    print("Generated persona:", persona)
+    def generate():
+        for chunk in llm.stream(final_prompt):
+            yield chunk
 
-    return jsonify({"result": persona})
+    return Response(generate(), mimetype='text/plain')
+
 
 @app.route('/test', methods=['GET'])
 def test():
