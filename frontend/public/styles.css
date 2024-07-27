@@ -47,16 +47,20 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+textarea {
     width: 100%;
     padding: 8px;
 }
 
+textarea {
+    resize: vertical; /* Permette di ridimensionare verticalmente */
+}
+
 .info-box {
-    background: #fff;
-    padding: 20px;
+    background: #ccc; /* Sfondo grigio */
+    /*padding: 20px;*/
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 2px double #000; /* Cornice nera doppia */
 }
 
 button {
@@ -79,7 +83,6 @@ button:hover {
 }
 
 .result-container {
-    background: #fff;
     border: 1px solid var(--primary-color);
     padding: 10px;
     margin-top: 20px;
@@ -88,16 +91,16 @@ button:hover {
 }
 
 .result-box {
-    background: #F5F5F5;
+    background: #fff;
     padding: 20px;
     border: 1px solid #ddd;
-    min-height: 100px;
+    min-height: 25em; /* Almeno 10 righe */
     width: 100%;
     box-sizing: border-box; /* Include padding e bordo nella larghezza totale */
+    overflow: auto; /* Aggiungi scrollbar */
 }
 
 .toolbar {
-    background: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,11 +113,11 @@ button:hover {
 }
 
 .copy-button {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     background: #fff; /* Sfondo bianco */
     color: #000; /* Disegno nero */
-    /* border: 1px solid var(--primary-color);  Aggiungi un bordo per migliorare la visibilità */
+    border: 1px solid var(--primary-color); /* Aggiungi un bordo per migliorare la visibilità */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -127,6 +130,18 @@ button:hover {
 
 .copy-button:hover {
     background: #f0f0f0; /* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+.copy-alert {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
 .new-session-button {

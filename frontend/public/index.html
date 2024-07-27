@@ -15,53 +15,54 @@
 
 <body>
     <div class="container">
-        <h1>Generatore di Personas Sintetiche</h1>
+        <h1>LLM-based Generator of Synthetic Personas</h1>
         <form id="personaForm">
         <div class="upper-section">
             <div class="form-group">
                 <div class="column left">
-                    <label for="objectives">Objectives:</label>
-                    <input type="text" id="objectives" name="objectives" required>
+                    <label for="objectives">Design Objectives:</label>
+                    <textarea id="objectives" name="objectives" rows="10" required></textarea>
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>Spiegazione su come valorizzare il campo Objectives.</p>
+                        <p>Personas help designers understand the needs, goals, and behaviors of their target users. By providing a brief description of the product, this tool can tailor the personas to reflect the specific context and use cases of the product, ensuring that the personas are relevant and useful for guiding the design process. Example: "I am designing an application to manage university orientation for students about to graduate, so that they can choose the university path that best suits them."</p>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="column left">
-                    <label for="features">Features:</label>
-                    <input type="text" id="features" name="features" required>
+                    <label for="features">Relevant Features:</label>
+                    <textarea id="features" name="features" rows="10" required></textarea>
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>Spiegazione su come valorizzare il campo Features.</p>
+                        <p>The LLM will create your persona will by following instructions/guildelines provided in this field. You can specify elements that are expected or put some constraints. Example: "Set an appropriate name, age and personality" or "Name is John, generate age and personality"</p>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="column left">
-                    <label for="nationality">Nazionalità:</label>
+                    <label for="nationality">Origin:</label>
                     <input type="text" id="nationality" name="nationality" required>
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>Spiegazione su come valorizzare il campo Nazionalità.</p>
+                        <p>Here, you can specify the origin of the persona.</p>
                     </div>
                 </div>
             </div>
         </div>
         </form>
-        <button type="submit" form="personaForm" aria-label="Genera Persona">Genera Persona</button>
+        <button type="submit" form="personaForm" aria-label="Genera Persona">Generate a Persona</button>
         <div class="lower-section">
             <div class="result-container">
-                <div id="result" class="result-box"></div>
+                <div id="result" class="result-box" contenteditable="false"></div>
                 <div class="toolbar">
                     <span class="toolbar-text">AI-generated code. Review and use carefully.</span>
                     <button onclick="copyToClipboard()" aria-label="Copia negli appunti" class="copy-button">
                         <span class="material-icons">content_copy</span>
                     </button>
+                    <span id="copy-alert" class="copy-alert">Text copied into clipboard!</span>
                 </div>
             </div>
             <button onclick="nuovaSessione()" aria-label="Nuova Sessione" class="new-session-button">
