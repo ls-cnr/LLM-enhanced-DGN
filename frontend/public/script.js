@@ -1,3 +1,23 @@
+// Genera un ID di sessione unico
+let sessionId = uuidv4();
+
+// Verifica che marked sia caricato correttamente
+window.onload = function() {
+    if (typeof marked === 'undefined') {
+        console.error('La libreria marked non è stata caricata correttamente');
+        // Definisci una funzione di fallback semplice
+        window.marked = {
+            parse: function(text) {
+                return text.replace(/\n/g, '<br>');
+            }
+        };
+    } else {
+        console.log('La libreria marked è stata caricata correttamente');
+    }
+};
+
+
+
 document.getElementById('personaForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -74,4 +94,22 @@ async function typewriterEffect(element, html) {
         }
     }
     //element.appendChild(document.createElement('br'));
+}
+
+// Funzione per copiare il testo nell'elemento "result"
+function copyToClipboard() {
+    const resultElement = document.getElementById('result');
+    const range = document.createRange();
+    range.selectNodeContents(resultElement);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+    alert('Testo copiato negli appunti!');
+}
+
+// Funzione per generare un nuovo ID di sessione
+function nuovaSessione() {
+    sessionId = uuidv4();
+    alert('Nuova sessione creata!');
 }
