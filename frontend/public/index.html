@@ -6,30 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generatore di Personas Sintetiche</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 </head>
+
 <body>
     <div class="container">
         <h1>Generatore di Personas Sintetiche</h1>
         <form id="personaForm">
-            <label for="objectives">Objectives:</label>
-            <input type="text" id="objectives" name="objectives" required>
-
-            <label for="features">Features:</label>
-            <input type="text" id="features" name="features" required>
-
-            <label for="nationality">Nazionalità:</label>
-            <input type="text" id="nationality" name="nationality" required>
-
-            <button type="submit">Genera Persona</button>
+        <div class="upper-section">
+            <div class="form-group">
+                <div class="column left">
+                    <label for="objectives">Objectives:</label>
+                    <input type="text" id="objectives" name="objectives" required>
+                </div>
+                <div class="column right">
+                    <div class="info-box">
+                        <p>Spiegazione su come valorizzare il campo Objectives.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="column left">
+                    <label for="features">Features:</label>
+                    <input type="text" id="features" name="features" required>
+                </div>
+                <div class="column right">
+                    <div class="info-box">
+                        <p>Spiegazione su come valorizzare il campo Features.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="column left">
+                    <label for="nationality">Nazionalità:</label>
+                    <input type="text" id="nationality" name="nationality" required>
+                </div>
+                <div class="column right">
+                    <div class="info-box">
+                        <p>Spiegazione su come valorizzare il campo Nazionalità.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </form>
-        <div id="result" class="result-box"></div>
-        <button onclick="copyToClipboard()">📋 Copia negli appunti</button>
-        <button onclick="nuovaSessione()">🔄 Nuova Sessione</button>
+        <button type="submit" form="personaForm" aria-label="Genera Persona">Genera Persona</button>
+        <div class="lower-section">
+            <div class="result-container">
+                <div id="result" class="result-box"></div>
+                <div class="toolbar">
+                    <span class="toolbar-text">AI-generated code. Review and use carefully.</span>
+                    <button onclick="copyToClipboard()" aria-label="Copia negli appunti" class="copy-button">
+                        <span class="material-icons">content_copy</span>
+                    </button>
+                </div>
+            </div>
+            <button onclick="nuovaSessione()" aria-label="Nuova Sessione" class="new-session-button">
+                <span class="material-icons">refresh</span> Start New Session
+            </button>
+        </div>
     </div>
-    <script src="script.js"></script>
 </body>
+<script src="script.js" defer></script>
 </html>

@@ -25,10 +25,20 @@ h1 {
     text-align: center;
 }
 
-form {
-    background: #fff;
-    padding: 20px;
+.upper-section {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.column {
+    width: 48%;
 }
 
 label {
@@ -40,7 +50,13 @@ input[type="text"],
 input[type="number"] {
     width: 100%;
     padding: 8px;
+}
+
+.info-box {
+    background: #fff;
+    padding: 20px;
     margin-bottom: 10px;
+    border: 1px solid #ddd;
 }
 
 button {
@@ -58,10 +74,79 @@ button:hover {
     background: var(--secondary-color);
 }
 
-.result-box {
+.lower-section {
+    position: relative;
+}
+
+.result-container {
     background: #fff;
-    padding: 20px;
+    border: 1px solid var(--primary-color);
+    padding: 10px;
     margin-top: 20px;
+    width: 100%; /* Assicurati che la cornice abbia la stessa larghezza del contenitore */
+    box-sizing: border-box; /* Include padding e bordo nella larghezza totale */
+}
+
+.result-box {
+    background: #F5F5F5;
+    padding: 20px;
     border: 1px solid #ddd;
     min-height: 100px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding e bordo nella larghezza totale */
+}
+
+.toolbar {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.toolbar-text {
+    font-size: 12px; /* Carattere piccolo */
+    color: var(--primary-color);
+}
+
+.copy-button {
+    width: 28px;
+    height: 28px;
+    background: #fff; /* Sfondo bianco */
+    color: #000; /* Disegno nero */
+    /* border: 1px solid var(--primary-color);  Aggiungi un bordo per migliorare la visibilità */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-button .material-icons {
+    font-size: 24px;
+}
+
+.copy-button:hover {
+    background: #f0f0f0; /* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+.new-session-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 8px;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
+.new-session-button .material-icons {
+    font-size: 24px;
+    margin-right: 8px; /* Spazio tra l'icona e il testo */
+}
+
+.new-session-button:hover {
+    background: var(--secondary-color);
 }
