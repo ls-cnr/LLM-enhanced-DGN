@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generatore di Personas Sintetiche</title>
+    <title>LLM-based Generator of Synthetic Personas</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>Personas help designers understand the needs, goals, and behaviors of their target users. By providing a brief description of the product, this tool can tailor the personas to reflect the specific context and use cases of the product, ensuring that the personas are relevant and useful for guiding the design process. Example: "I am designing an application to manage university orientation for students about to graduate, so that they can choose the university path that best suits them."</p>
+                        <p>Personas help designers understand the needs, goals, and behaviors of their target users. By providing a brief description of the product, this tool can tailor the personas to reflect the specific context and use cases of the product, ensuring that the personas are relevant and useful for guiding the design process. Example: <a href="#" onclick="copyToTextarea('objectives', 'I am designing an application to manage university orientation for students about to graduate, so that they can choose the university path that best suits them.')">"I am designing an application to manage university orientation for students about to graduate, so that they can choose the university path that best suits them."</a></p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>The LLM will create your persona will by following instructions/guildelines provided in this field. You can specify elements that are expected or put some constraints. Example: "Set an appropriate name, age and personality" or "Name is John, generate age and personality"</p>
+                        <p>The LLM will create your persona will by following instructions/guildelines provided in this field. You can specify elements that are expected or put some constraints. Example: <a href="#" onclick="copyToTextarea('features', 'Set an appropriate name, age and personality')">"Set an appropriate name, age and personality"</a> or <a href="#" onclick="copyToTextarea('features', 'Name is John, generate age and personality')">"Name is John, generate age and personality"</a></p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="column right">
                     <div class="info-box">
-                        <p>Here, you can specify the origin of the persona.</p>
+<p>Here, you can specify the origin of the persona. Example: <a href="#" onclick="copyToTextarea('nationality', 'Italy')">"Italy"</a></p>
                     </div>
                 </div>
             </div>
@@ -70,6 +70,8 @@
             </button>
         </div>
     </div>
-</body>
+    <footer>
+        <center><p>Created by Luca Sabatucci</p></center>
+    </footer></body>
 <script src="script.js" defer></script>
 </html>

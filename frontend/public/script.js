@@ -114,3 +114,8 @@ function nuovaSessione() {
     document.getElementById('result').innerHTML = '';
     alert('Nuova sessione creata!');
 }
+
+function copyToTextarea(textareaId, text) {
+    event.preventDefault();
+    document.getElementById(textareaId).value = text;
+}
