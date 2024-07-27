@@ -12,10 +12,11 @@ def create_prompt():
     template = """
     {design_objective}
     Assume the role of a User-centered Designer who is building Personas to design the system.
-    Generate a new 'persona' as a user of my application. The persona lives in {country}.
-    {features}
+    Generate 'persona' as a archetypal user of my application. The persona is from {country}.
+    Generate these features: {features}, eansuring they are original and different from any other previously generated.
     Define a short biography including personal interests/motivations, and relationships with family and friends.
-    Print only the persona using this template where instructions are guven between [], don't use preambles, courtesy phrases or concluding sentences:
+    Print in English only the persona, don't use preambles, courtesy phrases or concluding sentences.
+    Use the following template where instructions are between []:
     **PERSONA: [NAME]**
     *Personal Information*
     Age: [AGE]
