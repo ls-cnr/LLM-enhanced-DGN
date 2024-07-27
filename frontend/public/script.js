@@ -73,5 +73,5 @@ async function typewriterEffect(element, html) {
             await new Promise(resolve => setTimeout(resolve, 20)); // Adjust delay as needed
         }
     }
-    element.appendChild(document.createElement('br'));
+    //element.appendChild(document.createElement('br'));
 }
