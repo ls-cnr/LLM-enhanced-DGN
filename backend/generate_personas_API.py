@@ -12,9 +12,7 @@ def create_prompt():
     template = """
     {design_objective}
     Assume the role of a User-centered Designer who is building Personas to design the system.
-    Generate 'persona' as a archetypal user of my application. The persona is from {country}.
-    Generate these features: {features}, eansuring they are original and different from any other previously generated.
-    Define a short biography including personal interests/motivations, and relationships with family and friends.
+    Generate a 'persona' as a archetypal user of my application according to these features: {features}, Ensure the persona is original and different from any other previously generated.
     Print in English only the persona, don't use preambles, courtesy phrases or concluding sentences.
     Use the following template where instructions are between []:
     **PERSONA: [NAME]**
@@ -25,7 +23,7 @@ def create_prompt():
     *Personality*
     [3 ADJECTIVES THAT DESCRIBE THE PERSONA]
     *Biography*
-    [A BRIEF PERSONAL HISTORY. WRITTEN IN FIRST PERSON (MAX 80 WORDS)]
+    [A BRIEF PERSONAL HISTORY INCLUDING PERSONAL INTERESTS AND RELATIONSHIPS WITH FAMILY/FRIENDS (WRITTEN IN FIRST PERSON, MAX 100 WORDS)]
     [A TYPICAL DAY. WRITTEN IN FIRST PERSON (MAX 80 WORDS)]
     """
 
@@ -51,7 +49,7 @@ prompt_template = create_prompt()
 @app.route('/generate', methods=['POST'])
 def handle_generate():
     data = request.get_json()
-    nationality = data.get('nationality')
+    #nationality = data.get('nationality')
     objective = data.get('_objectives', "")
     features = data.get('features', "")
     session_id = data.get('session_id')
@@ -59,12 +57,12 @@ def handle_generate():
     if not session_id:
         return jsonify({"error": "Session ID is required"}), 400
 
-    print(f"Generating for {nationality} with features: {features}")
+    print(f"Generating with features: {features}")
     print(f"Session ID: {session_id}")
 
     final_prompt = prompt_template.format(
         design_objective=objective,
-        country=nationality,
+        #country=nationality,
         features=features
     )
 

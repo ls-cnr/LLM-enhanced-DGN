@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('button[aria-label="Genera Persona"]').addEventListener('click', async (e) => {
         e.preventDefault();
 
-        const nationality = document.getElementById('nationality').value;
+        //const nationality = document.getElementById('nationality').value;
         const _objectives = document.getElementById('objectives').value;
         const features = document.getElementById('features').value;
 
-        console.log('Nazionalità:', nationality);
+        //console.log('Nazionalità:', nationality);
         console.log('Objectives:', _objectives);
         console.log('Features:', features);
         console.log('Session ID:', sessionId);
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nationality, _objectives, features, session: sessionId }),
+                body: JSON.stringify({ _objectives, features, session: sessionId }),
             });
 
             if (!response.ok) {
@@ -116,7 +116,7 @@ function nuovaSessione() {
     sessionId = uuidv4();
     document.getElementById('objectives').value = '';
     document.getElementById('features').value = '';
-    document.getElementById('nationality').value = '';
+    //document.getElementById('nationality').value = '';
     document.getElementById('result').innerHTML = '';
     //alert('Nuova sessione creata!');
 }

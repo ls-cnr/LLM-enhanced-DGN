@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 
 app.post('/generate', async (req, res) => {
   try {
-    const { nationality, _objectives, features, session } = req.body;
-    const requestBody = JSON.stringify({ nationality, _objectives, features, session_id: session });
+    const {  _objectives, features, session } = req.body;
+    const requestBody = JSON.stringify({ _objectives, features, session_id: session });
     console.log('Invio richiesta a Flask con:', requestBody );
 
     // Invoca il servizio Python
@@ -44,7 +44,7 @@ app.post('/generate', async (req, res) => {
     pythonResponse.body.on('end', () => {
       res.end();
     });
-    
+
   } catch (error) {
     console.error('Errore durante la generazione della persona:', error);
     res.status(500).json({ error: 'Si è verificato un errore durante la generazione della persona.' });
