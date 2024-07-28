@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('La libreria marked è stata caricata correttamente');
     }
 
+    // Genera un ID di sessione unico
+    let sessionId = uuidv4();
+
     document.querySelector('button[aria-label="Genera Persona"]').addEventListener('click', async (e) => {
         e.preventDefault();
 
