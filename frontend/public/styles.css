@@ -59,7 +59,7 @@ h1 {
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   font-weight: bold;
   color: var(--secondary-color);
 }
@@ -136,7 +136,7 @@ button:hover {
   align-items: center;
   margin-top: 15px;
   padding: 10px;
-  background: #f0f0f0;
+  background: #fff;
   border-radius: 4px;
 }
 
