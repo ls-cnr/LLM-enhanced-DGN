@@ -101,10 +101,16 @@ function copyToClipboard() {
 
     const copyAlert = document.getElementById('copy-alert');
     copyAlert.style.display = 'block';
+    copyAlert.style.opacity = '1';
+
     setTimeout(() => {
-        copyAlert.style.display = 'none';
+        copyAlert.style.opacity = '0';
+        setTimeout(() => {
+            copyAlert.style.display = 'none';
+        }, 300); // Aspetta che la transizione di opacità sia completata
     }, 2000); // Mostra l'alert per 2 secondi
 }
+
 
 function nuovaSessione() {
     sessionId = uuidv4();
