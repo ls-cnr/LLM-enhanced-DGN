@@ -112,7 +112,7 @@ function nuovaSessione() {
     document.getElementById('features').value = '';
     document.getElementById('nationality').value = '';
     document.getElementById('result').innerHTML = '';
-    alert('Nuova sessione creata!');
+    //alert('Nuova sessione creata!');
 }
 
 function copyToTextarea(textareaId, text) {
