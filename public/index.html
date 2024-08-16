@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM-enhanced DGN</title>
+    <link rel="stylesheet" href="http://127.0.0.1:5000/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.3/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>LLM-enhanced DGN</h1>
+
+        <div class="content-wrapper">
+            <div class="section">
+                <label for="user-profile">User Profile:</label>
+                <textarea id="user-profile" placeholder="Describe the user profile..."></textarea>
+                <button id="analyze-profile">Task 1: Analyze User Profile</button>
+                <div class="result-container">
+                    <div id="profile-analysis-result" class="result-box" contenteditable="false"></div>
+<div class="toolbar">
+    <span class="toolbar-text">AI-generated analysis. Review carefully.</span>
+    <button aria-label="Copy to clipboard" class="copy-button" data-target="profile-analysis-result">
+        <i class="material-icons">content_copy</i>
+        <span class="copy-alert">Text copied to clipboard!</span>
+    </button>
+</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <label for="available-devices">List of available devices:</label>
+                <textarea id="available-devices" placeholder="List the available devices..."></textarea>
+                <button id="generate-contributions">Task 2: Generate Contributions</button>
+                <div class="result-container">
+                    <div id="generated-contributions-result" class="result-box" contenteditable="false"></div>
+                    <div class="toolbar">
+                        <span class="toolbar-text">AI-generated analysis. Review carefully.</span>
+                        <button aria-label="Copy to clipboard" class="copy-button" data-target="profile-analysis-result">
+                            <i class="material-icons">content_copy</i>
+                            <span class="copy-alert">Text copied to clipboard!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button aria-label="New Session" class="new-session-button">
+            <i class="material-icons">refresh</i> Start New Session
+        </button>
+
+        <footer>
+            <p>Created by Luca Sabatucci</p>
+        </footer>
+    </div>
+
+    <script src="http://127.0.0.1:5000/script.js"></script>
+</body>
+</html>
